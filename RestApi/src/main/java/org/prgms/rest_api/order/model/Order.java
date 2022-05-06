@@ -1,5 +1,7 @@
 package org.prgms.rest_api.order.model;
 
+import org.prgms.rest_api.vo.Address;
+
 import java.time.LocalDateTime;
 import java.util.List;
 

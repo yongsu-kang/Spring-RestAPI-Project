@@ -1,4 +1,4 @@
-package org.prgms.rest_api.order.model;
+package org.prgms.rest_api.vo;
 
 import java.util.Objects;
 
@@ -7,8 +7,16 @@ public class Address {
     private Long postcode;
 
     public Address(String address, Long postcode) {
+        checkPostcode(postcode);
+
         this.address = address;
         this.postcode = postcode;
+    }
+
+    private void checkPostcode(Long postcode) {
+        if (postcode < 0) {
+            throw new IllegalArgumentException("wrong input postcode");
+        }
     }
 
     @Override
