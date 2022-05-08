@@ -1,9 +1,9 @@
 package org.prgms.rest_api.product.service;
 
+import org.prgms.rest_api.product.dto.CreateProductRequest;
 import org.prgms.rest_api.product.dto.ProductDto;
 import org.prgms.rest_api.product.model.Category;
 import org.prgms.rest_api.product.model.Product;
-import org.prgms.rest_api.product.repository.ProductRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,14 +11,15 @@ import java.util.List;
 @Service
 public interface ProductService {
 
-    Long createProduct(ProductDto productDto);
+    Long createProduct(CreateProductRequest createProductRequest);
 
-    List<Product> getProductAll();
+    List<ProductDto> getProductAll();
 
-    List<Product> getProductByCategory(Category category);
+    List<ProductDto> getProductByCategory(Category category);
 
-    void deleteByProductId(ProductDto productDto);
+    ProductDto getProductById(Long productId);
 
+    void deleteByProductId(Long productDto);
 
     default ProductDto entityToDto(Product product) {
         return new ProductDto.ProductDtoBuilder()
@@ -41,4 +42,6 @@ public interface ProductService {
                 .modifiedAt(productDto.getModifiedAt())
                 .build();
     }
+
+
 }
