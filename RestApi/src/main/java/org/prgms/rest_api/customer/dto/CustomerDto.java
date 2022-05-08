@@ -3,7 +3,6 @@ package org.prgms.rest_api.customer.dto;
 import org.prgms.rest_api.order.model.Order;
 import org.prgms.rest_api.vo.Address;
 import org.prgms.rest_api.vo.Email;
-import org.prgms.rest_api.voucher.Voucher;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -16,7 +15,6 @@ public class CustomerDto {
     private final LocalDateTime createdAt;
     private LocalDateTime modifiedAt;
     private List<Order> orders;
-    private List<Voucher> vouchers;
 
     private CustomerDto(CustomerDtoBuilder builder) {
         this.customerId = builder.customerId;
@@ -26,7 +24,26 @@ public class CustomerDto {
         this.createdAt = builder.createdAt;
         this.modifiedAt = builder.modifiedAt;
         this.orders = builder.orders;
-        this.vouchers = builder.vouchers;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setEmail(Email email) {
+        this.email = email;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    public void setModifiedAt(LocalDateTime modifiedAt) {
+        this.modifiedAt = modifiedAt;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
     }
 
     public Long getCustomerId() {
@@ -57,10 +74,6 @@ public class CustomerDto {
         return orders;
     }
 
-    public List<Voucher> getVouchers() {
-        return vouchers;
-    }
-
     public static class CustomerDtoBuilder {
         private final Long customerId;
         private String name;
@@ -69,7 +82,6 @@ public class CustomerDto {
         private final LocalDateTime createdAt;
         private LocalDateTime modifiedAt;
         private List<Order> orders;
-        private List<Voucher> vouchers;
 
         public CustomerDtoBuilder(Long customerId, LocalDateTime createdAt) {
             this.customerId = customerId;
@@ -98,11 +110,6 @@ public class CustomerDto {
 
         public CustomerDtoBuilder orders(List<Order> orders) {
             this.orders = orders;
-            return this;
-        }
-
-        public CustomerDtoBuilder vouchers(List<Voucher> vouchers) {
-            this.vouchers = vouchers;
             return this;
         }
 

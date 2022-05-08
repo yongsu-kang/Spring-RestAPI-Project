@@ -3,7 +3,6 @@ package org.prgms.rest_api.customer.model;
 import org.prgms.rest_api.vo.Address;
 import org.prgms.rest_api.order.model.Order;
 import org.prgms.rest_api.vo.Email;
-import org.prgms.rest_api.voucher.Voucher;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -16,7 +15,6 @@ public class Customer {
     private final LocalDateTime createdAt;
     private LocalDateTime modifiedAt;
     private List<Order> orders;
-    private List<Voucher> vouchers;
 
     private Customer(CustomerBuilder builder) {
         this.customerId = builder.customerId;
@@ -55,18 +53,6 @@ public class Customer {
         return orders;
     }
 
-    public List<Voucher> getVouchers() {
-        return vouchers;
-    }
-
-    public void addOrders(List<Order> orders) {
-        this.orders = orders;
-    }
-
-    public void addVouchers(List<Voucher> vouchers) {
-        this.vouchers = vouchers;
-    }
-
     public static class CustomerBuilder{
         private final Long customerId;
         private String name;
@@ -75,7 +61,6 @@ public class Customer {
         private final LocalDateTime createdAt;
         private LocalDateTime modifiedAt;
         private List<Order> orders;
-        private List<Voucher> vouchers;
 
         public CustomerBuilder(Long customerId, LocalDateTime createdAt) {
             this.customerId = customerId;
@@ -104,12 +89,6 @@ public class Customer {
             this.orders = orders;
             return this;
         }
-
-        public CustomerBuilder vouchers(List<Voucher> vouchers) {
-            this.vouchers = vouchers;
-            return this;
-        }
-
 
         public Customer build(){
             return new Customer(this);
