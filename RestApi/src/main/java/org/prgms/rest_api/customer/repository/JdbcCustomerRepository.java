@@ -73,6 +73,11 @@ public class JdbcCustomerRepository implements CustomerRepository{
         jdbcTemplate.update("delete from customer", Collections.emptyMap());
     }
 
+    @Override
+    public void deleteById(Long customerId) {
+        jdbcTemplate.update("delete from customer where customer_id = :customerId", Collections.singletonMap("customerId", customerId));
+    }
+
     private RowMapper<Customer> getCustomerRowMapper(){
         return (resultSet, rowNum) ->{
             return new Customer.CustomerBuilder(resultSet.getLong("customer_id"), toLocalDateTime(resultSet.getTimestamp("created_at")))

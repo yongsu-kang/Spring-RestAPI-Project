@@ -17,4 +17,6 @@ public interface CustomerRepository {
     List<Customer> findAll();
 
     void deleteAll();
+
+    void deleteById(Long customerId);
 }
