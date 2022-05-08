@@ -2,17 +2,16 @@ package org.prgms.rest_api.product.dto;
 
 import org.prgms.rest_api.product.model.Category;
 
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PositiveOrZero;
 
 public class CreateProductRequest {
-    @NotEmpty
+    @NotNull
     private String productName;
-    @NotEmpty
+    @NotNull
     @PositiveOrZero
     private Long price;
-    @NotEmpty
+    @NotNull
     private Category category;
     private String description;
 
