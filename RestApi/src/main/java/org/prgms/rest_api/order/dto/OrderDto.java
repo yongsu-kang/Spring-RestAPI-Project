@@ -5,16 +5,18 @@ import org.prgms.rest_api.order.model.OrderItem;
 import org.prgms.rest_api.order.model.OrderStatus;
 import org.prgms.rest_api.vo.Address;
 
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.util.List;
 
 public class OrderDto {
-    private final Long orderId;
-    private final Long customerId;
+    private Long orderId;
+    private Long customerId;
     private Address address;
-    private final List<OrderItem> orderItems;
+    @NotNull
+    private List<OrderItem> orderItems;
     private OrderStatus orderStatus;
-    private final LocalDateTime createdAt;
+    private LocalDateTime createdAt;
     private LocalDateTime modifiedAt;
 
     private OrderDto(OrderDtoBuilder builder) {
@@ -69,12 +71,12 @@ public class OrderDto {
     }
 
     public static class OrderDtoBuilder{
-        private final Long orderId;
-        private final Long customerId;
+        private Long orderId;
+        private Long customerId;
         private Address address;
-        private final List<OrderItem> orderItems;
+        private List<OrderItem> orderItems;
         private OrderStatus orderStatus;
-        private final LocalDateTime createdAt;
+        private LocalDateTime createdAt;
         private LocalDateTime modifiedAt;
 
         public OrderDtoBuilder(Long orderId, Long customerId, List<OrderItem> orderItems, LocalDateTime createdAt) {
