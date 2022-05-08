@@ -2,14 +2,20 @@ package org.prgms.rest_api.order.model;
 
 import org.prgms.rest_api.product.model.Category;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
+import javax.validation.constraints.PositiveOrZero;
 import java.time.LocalDateTime;
 
 public class OrderItem {
     private final Long orderItemId;
     private Long orderId;
+    @NotNull
     private Long productId;
     private Category category;
+    @PositiveOrZero
     private Long price;
+    @Positive
     private int quantity;
     private final LocalDateTime createdAt;
     private LocalDateTime modifiedAt;
