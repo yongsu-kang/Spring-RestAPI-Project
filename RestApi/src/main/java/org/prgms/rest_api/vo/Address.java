@@ -1,9 +1,12 @@
 package org.prgms.rest_api.vo;
 
+import javax.validation.constraints.NotBlank;
 import java.util.Objects;
 
 public class Address {
+    @NotBlank
     private String address;
+    @NotBlank
     private Long postcode;
 
     public Address(String address, Long postcode) {

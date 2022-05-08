@@ -4,6 +4,7 @@ import java.util.Objects;
 import java.util.regex.Pattern;
 
 public class Email {
+    @javax.validation.constraints.Email
     private String email;
 
     public Email(String email) {
